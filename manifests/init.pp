@@ -69,12 +69,4 @@ class incron (
     mode   => '0755',
     purge  => $purge
   }
-
-  init_ulimit { 'mod_open_files_incrond':
-    target  => 'incrond',
-    item    => 'max_open_files',
-    value   => $max_open_files,
-    notify  => Class['incron::service'],
-    require => Package['incron']
-  }
 }
